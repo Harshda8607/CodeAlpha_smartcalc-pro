@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SmartCalc Pro: a fast, accessible calculator with history, memory and scientific mode.">
+<title>SmartCalc Pro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="app">
+  <section class="calc" aria-label="SmartCalc Pro calculator">
+    <header class="top">
+      <div class="brand"><span class="logo" aria-hidden="true"></span><h1>SmartCalc Pro</h1></div>
+      <div class="tools">
+        <button class="chip" id="modeBtn" data-a="mode" aria-pressed="false">Scientific</button>
+        <button class="chip icon" id="themeBtn" data-a="theme" aria-label="Switch between light and dark theme">☀</button>
+      </div>
+    </header>
+
+    <div class="screen">
+      <div class="meta">
+        <div class="status" role="status"><i id="dot" aria-hidden="true"></i><span id="statusText">Ready</span></div>
+        <b id="memBadge" hidden title="Memory in use">M</b>
+      </div>
+      <div class="expr" id="expr" aria-label="Expression"></div>
+      <output class="main" id="main" aria-live="polite">0</output>
+      <div class="preview" id="preview" aria-label="Result preview"></div>
+    </div>
+
+    <div class="row mem" role="group" aria-label="Memory">
+      <button data-a="mc" aria-label="Memory clear">MC</button>
+      <button data-a="mr" aria-label="Memory recall">MR</button>
+      <button data-a="mp" aria-label="Memory add">M+</button>
+      <button data-a="mm" aria-label="Memory subtract">M−</button>
+      <button data-a="ms" aria-label="Memory store">MS</button>
+    </div>
+
+    <div class="row sci" id="sci" role="group" aria-label="Scientific functions" hidden>
+      <button data-a="sq" aria-label="Square">x²</button>
+      <button data-a="sqrt" aria-label="Square root">√x</button>
+      <button data-a="inv" aria-label="Reciprocal">1/x</button>
+      <button data-a="op" data-v="^" aria-label="Power">xʸ</button>
+      <button data-a="lp" aria-label="Open bracket">(</button>
+      <button data-a="rp" aria-label="Close bracket">)</button>
+    </div>
+
+    <div class="row util" role="group" aria-label="Utilities">
+      <button data-a="bs" aria-label="Backspace">⌫</button>
+      <button data-a="copy" aria-label="Copy result">Copy</button>
+      <button data-a="reset" aria-label="Reset calculator">Reset</button>
+      <button data-a="hist" id="histBtn" aria-expanded="false" aria-controls="history">History</button>
+    </div>
+
+    <div class="keys" role="group" aria-label="Keypad">
+      <button class="clr" data-a="ac" aria-label="All clear">AC</button>
+      <button class="clr" data-a="ce" aria-label="Clear entry">CE</button>
+      <button class="fn" data-a="pct" aria-label="Percent">%</button>
+      <button class="op" data-a="op" data-v="÷" aria-label="Divide">÷</button>
+      <button data-a="d" data-v="7">7</button>
+      <button data-a="d" data-v="8">8</button>
+      <button data-a="d" data-v="9">9</button>
+      <button class="op" data-a="op" data-v="×" aria-label="Multiply">×</button>
+      <button data-a="d" data-v="4">4</button>
+      <button data-a="d" data-v="5">5</button>
+      <button data-a="d" data-v="6">6</button>
+      <button class="op" data-a="op" data-v="−" aria-label="Subtract">−</button>
+      <button data-a="d" data-v="1">1</button>
+      <button data-a="d" data-v="2">2</button>
+      <button data-a="d" data-v="3">3</button>
+      <button class="op" data-a="op" data-v="+" aria-label="Add">+</button>
+      <button class="fn" data-a="neg" aria-label="Toggle positive or negative">±</button>
+      <button data-a="d" data-v="0">0</button>
+      <button data-a="dot" aria-label="Decimal point">.</button>
+      <button class="eq" data-a="eq" aria-label="Equals">=</button>
+    </div>
+  </section>
+
+  <aside class="history" id="history" aria-label="Calculation history">
+    <div class="hhead"><h2>History</h2><button class="chip" data-a="hclear">Clear history</button></div>
+    <ul id="hList"></ul>
+    <p class="hint">Keys: 0-9 + - * / . % ^ ( ) · Enter = · Backspace · Delete = CE · Esc = AC · Ctrl+C copies</p>
+  </aside>
+</main>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
